@@ -9,9 +9,9 @@
 	<title>Nick Bennett Portfolio</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
 	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
 
 <body class="is-preload">
@@ -22,15 +22,16 @@
 		<!-- Header -->
 		<header id="header">
 			<a class="logo">Sudoku Solver</a>
+			<h4>January 26th, 2020</h4>
 		</header>
 
 		<!-- Nav -->
 		<nav id="nav">
 			<ul class="links">
-				<li><a href="index.html">Hope Page</a></li>
-				<li><a href="projectsPage.html">Projects</a></li>
-				<li><a href="resumePage.html">Resume</a></li>
-				<li><a href="moreAboutMe.html">More About Me</a></li>
+				<li><a href="../index.html">Hope Page</a></li>
+				<li><a href="../projectsPage.html">Projects</a></li>
+				<li><a href="../resumePage.html">Resume</a></li>
+				<li><a href="../moreAboutMe.html">More About Me</a></li>
 				<li class="active"><a href="SudokoPage.html">Sudoku Solver</a></li>
 			</ul>
 			<ul class="icons">
@@ -46,153 +47,100 @@
 
 			<article class="post featured">
 				<header class="major">
-					<h2>A quick about me</h2>
+					<h2>What was the goal?</h2>
 				</header>
 				<body>
-					<a href="moreAboutMe.html" class="image right"><img src="images/shawneeStateImage.jpg" /></a>
-					<p2>Welcome to my Portfolio! Thank you for
-						  taking the time to look over what I have 
-							to offer. A little bit about me; I'm currently
-							attending Shawnee State University obtaining
-							a bachelors in Digital Simulation/Game Engineering
-							Technologies with a minor in mathematics. I love the
-							freedom that programming gives and it's turned into
-							a real passion for me.
-					</p2>
+					<a class="image right"><img src="../images/GIFS/Sudoku/SudokuSolvingGif.gif" /></a>
+					<p2>At this point in time I was a sophmore in college,
+						  and I was thinking of things that I knew were weaknesses for me
+							so that I could focus on improving in those places. One of those
+							topics for me was function recursion (i.e. when a function or method
+							calls itself). It was a topic that myself and many others
+							seemed to have a hard time wrapping our heads around. So I took to the
+							internet like most college students do looking for inspiration on how 
+							I might be able to improve on this subject. I ended up coming 
+							across an interesting project that talked about making a sudoku solver with
+							function recursion. Right then I decided I wanted to make one for myself too! </p2>
 				</body>
-				<ul class="actions special">
-					<li><a href="moreAboutMe.html" class="button large">More about me</a></li>
-				</ul>
 			</article> 
 
 			<article class="post featured">
 				<header class="major">
-					<h2>My Projects</h2>
+					<h2>My approach</h2>
 				</header>
 				<body>
-					<a href="projectsPage.html" class="image left"><img src="images/OS_CodingExample.PNG" /></a>
-					<p2>Over time I've accumulated my own repertoire of
-						projects that show off a handful of my
-						different skills. All the way back to older
-						projects focused on function recursion to
-						more recent work with larger groups
-						focused on entire backend systems for
-						games made from scratch.</p2>
+					<p2>
+						I knew that when approaching this project I would have to think a little
+						outside of my comfort zone because I was working with concepts and
+						practices that were foreign for me. I knew that the real bulk of
+						work, when it came to the actual solving of the sudoku puzzle, would be 
+						contained in one function. Then that function would be what called itself
+						recursively, ultimately solving the puzzle. But before I really tackled 
+						that function I knew I needed to lay some ground work. I needed something
+						that represented my sudoku puzzle behind the scenes. I decided to go with
+						an object oriented approach and make a "Board" class as well as a "Cell" class.
+						<br/><br/>
+						The Board object would be responsible for creating the sudoku puzzle via a two 
+						dimensional array of cell objects as well as managing the puzzle entirely. I wanted 
+						the end goal for solving a board to simply look like "Board.solve()". I also wanted some
+						way to visualize the Board so I decided to go with what Pygame as the library I'd use to 
+						do that since it was what I knew the best at the time. 
+						<br/><br/>
+						Finally after all the preliminary work was finish I could get to work on my solve function.
+						Before I actually wrote any lines of code I wanted some kind of outline so I knew what the 
+						function needed. I landed on two core things the function needed to accomplish:<br/>
+						1. Keep track of the current row and column (i.e. "active cell") appropriately<br/>
+						2. Try placing a number into the active cell and see if that placement is valid<br/>
+						These two goals are definitely a bit broad, but, as an example, if the currently active cell
+						was a cell that had a number given from the start then that cell would need to be skipped. 
+						Another example would be if we wanted to place, say, a number 5 into the active cell then the board would need 
+						to check to see if that was a valid placement based on the rules of sudoku. And if you're not familiar
+						with the rules of sudoku there are three main criteria; a number cannot be repeated in a row, 
+						column, or the 3x3 subsection within the board. Eventually after a fair bit of trial and error I landed on 
+						these two function as my solve and validSpot. I ended up abstracting the constraint checking into
+						its own function so that it didnt overly clutter the easy to read goal I had for the solve function.
+					</p2>
+					<div class="row">
+						<div class="column">
+							<img src="../images/Sudoku Images/SolveFunction.PNG" alt="valid" style="width:105%">
+						</div>
+						<div class="column">
+							<img src="../images/Sudoku Images/ValidSpotImage.PNG" alt="solve" style="width:105%">
+						</div>
+					</div>
 				</body>
-				<ul class="actions special">
-					<li><a href="projectsPage.html" class="button large">Take a Look</a></li>
-				</ul>
-			</article>
+			</article> 
 
 			<article class="post featured">
 				<header class="major">
-					<h2>My Resume</h2>
+					<h2>Challenges Faced and Things Learned</h2>
 				</header>
 				<body>
-					<a href="resumePage.html" class="image right"><img src="images/ResumeImages/ResumeImage.PNG" /></a>
-					<p2>My resume highlights some of the more noteworthy
-						self-training projects I've done along with some of
-						the particular skills I aquired in doing those projects.
-					  If you're looking for a very formal and brief summation
-						of my skill set and things I've done then this is 
-						the resource you're looking for you.
+					<p2>For me the biggest challenge on this project was forcing myself to think
+						differently thank I normally do. The whole idea of function recursion made sense to me
+						practically, but in use it could get very confussing once a function has recurssed on itself
+						hundreds of times. But taking the extra time to think about these concepts and how to work
+						with them really helped. So much so that one of the most difficult pre-loaded sudoku boards
+						that I have in my programe recursively calls the solve function over 35,000 times. All in all
+						this project helped me as just a general programmer but also in specifically targeted areas as
+						well.
 					</p2>
 				</body>
-				<ul class="actions special">
-					<li><a href="resumePage.html" class="button large">Take a Look</a></li>
-				</ul>
-			</article>
+			</article> 
 
-			<!-- Posts -->
-			<section class="posts">
-				<article>
-					<header>
-						<span class="date">January 17th, 2020</span>
-						<h2><a href="#">Pathfinding Algorithms<br />
-								A* and Breath-First</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="images/A-starAlgorithm.PNG" alt="" /></a>
-					<p>As a small self project during winter break my sophmore year I decided to do some reasearch and make my own
-						little program that shows two pathfinding algorithms at work: A* and Breath-First_Search.
-						This was a great experience and I learned a lot about graphs and algorithms in general.</p>
-					<ul class="actions special">
-						<li><a href="PathfindingAlgsSelfProject/FullDemonstration.zip" class="button">Download Code</a>
-						</li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<span class="date">January 26th, 2020</span>
-						<h2><a href="#">Sudoku With<br />
-								Function Recursion</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="images/MySudoku.PNG" alt="" /></a>
-					<p>A self project I did to challenge and better myself in function recursion. Since this is a subject many
-						have a very lose grasp on decided it would be a short and very beneficial project to work on. And yes
-						it solves any solvable sudoku board.</p>
-					<ul class="actions special">
-						<li><a href="SudokuSelfProject/SudokuFull.zip" class="button">Download Code</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<span class="date">March 7th, 2019</span>
-						<h2><a href="#">First Game Jam<br />
-								Theme: "The End"</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="images/GameJame1.PNG" alt="" /></a>
-					<p>Game Jams are a great way to challenge yourself. In this case I worked mostly on the game mechanices, but
-						for me my biggest take away from this was the time management skills aquired from the small time frame and
-						the small
-						group of people.</p>
-					<ul class="actions special">
-						<li><a href="FirstGameJam/FullGame.zip" class="button">Download Code</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<span class="date">September 10th, 2019</span>
-						<h2><a href="#">Second Game Jam<br />
-								Theme: "It's not a bug
-								its a feature"</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="images/UnityGameJame.PNG" alt="" /></a>
-					<p>With this game jam, me and my small group really wanted to challenge ourselves by diving into Unity for the
-						very first time. I worked on the second level of the game as well as doing a bulk of the coding for the
-						players and enemies</p>
-					<ul class="actions special">
-						<li><a href="#" class="button">Too Big to Download :(</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<span class="date">November 11th, 2019</span>
-						<h2><a href="#">My Very Own<br />
-								Snake Clone</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="images/Snake.PNG" alt="" /></a>
-					<p> There are some things that are a right of passage for a programmer, and to me one of those
-						is making a snake clone. I took a couple creative liberties of my own and the snake type movement
-						was really fun to figure out.</p>
-					<ul class="actions special">
-						<li><a href="SnakeProject/SnakeGameFull.zip" class="button">Download Code</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<span class="date">February 10th, 2019</span>
-						<h2><a href="#">Dungeon Diving<br />
-								Group Project</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="images/DungeonDiving.PNG" alt="" /></a>
-					<p>This is the first long project I've worked on in a group. This was done during
-						the second semester of freshman year. I worked on the different characters, enemie types
-						, map creation, level flow, and menu system.</p>
-					<ul class="actions special">
-						<li><a href="DungeonDiving/DungeonDivingFull.zip" class="button">Download Code</a></li>
-					</ul>
-				</article>
-			</section>
+			<article class="post featured">
+				<header class="major">
+					<h2>How to check out the project?</h2>
+				</header>
+				<body>
+					<p2>The project with all the source code is up on my GitHub for you to download if you'd like to check it out!
+						<br/><br/>
+						<ul class="actions special">
+							<li><a href="https://github.com/NickBennett911/SudokuSolver/tree/master" class="button">GitHub Link</a></li>
+						</ul>
+					</p2>
+				</body>
+			</article> 
 
 		</div>
 
@@ -211,7 +159,7 @@
 		<!-- Copyright -->
 		<div id="copyright">
 			<ul>
-				<li>&copy; <a href="index.html">Back to Top</a></li>
+				<li>Navigate: <a href="SudokoPage.html">Back to Top</a></li>
 				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
 			</ul>
 		</div>
