@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Nick Bennett Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Header -->
+		<header id="header">
+			<a class="logo">Snake Clone</a>
+			<h4>Novermber 11th, 2019</h4>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="../index.html">Hope Page</a></li>
+				<li><a href="../projectsPage.html">Projects</a></li>
+				<li><a href="../resumePage.html">Resume</a></li>
+				<li><a href="../moreAboutMe.html">More About Me</a></li>
+				<li class="active"><a href="SnakeClone.html">Snake Clone</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands fa-linkedin"><span
+							class="label">Instagram</span></a></li>
+				<li><a href="https://github.com/NickBennett911" class="icon brands fa-github"><span
+							class="label">GitHub</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<article class="post featured">
+				<header class="major">
+					<h2>What was the goal?</h2>
+				</header>
+				<body>
+					<a class="image right"><img src="../images/GIFS/SnakeClone/LongLengthDeath.gif" /></a>
+					<p2>
+						The goal of this project for me was to create my very own snake clone, but that seemed just a bit too easy 
+						for me. So to spice things up a bit I only gave myself two and a half hours to finish to clone. At the time I 
+						was working as a supplemental instructor on campus and my shift was quite dead. So I decided that with two
+						and a half hours left on the clock I'd try and make my very own snake clone!
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>My approach</h2>
+				</header>
+				<body>
+					<p2>
+						Due to the extreme time constraint I put on myself I wasnt able to due my usual method planning things out. So 
+						instead I just had to start typing right away. Using the pygame library as me graphics the first things I tackled
+						was the play area. I needed something that my furture player was going to navigate around. So like all Snake games
+						I created a 2D grid of tile objects that was wrapped up neatly inside of a Map object. The main purpose of this 
+						map object was the manage everything to do with the tile's, largly including the food tile. This was all farily
+						rutine work however, the real fun came when I actually started on the player.<br/><br/>
+
+						The intelectual challange of coming up with how I'd be able to get the unique movement of Snake in such a 
+						short period of time was actually quite fun. My first iteration of Snake movement ended up having all parts of the 
+						snake move in the same directions at the same time. I realized instantly that I'd have to think a little outside 
+						the box for this one. Since when thinking about Snake, the movement almost cascades down the snake in a way. For example,
+						if you are moving up and move to the right its almost as if the head of the snake drops a kind of "beacon" that 
+						tells future parts of the snake, that get to it's location, that they need to also move to the right.<br/><br/>
+
+						That way of thinking is how I approached the issue. I essentially made a queue of "directions" inside my player object.
+						This queue (which really was just an array) held info at each element for where the direction was changed, what direction 
+						was actually pressed and most importantly how many player cells the direction has affected. This way, each time the player went
+						to move this queue got checked, and whichever player cell was at that location then that cell got its direction changed to the 
+						new direction and so on providing the cascade effect. Then when the number of effected player cells for that direction
+						becomes equal to the number of cells in the player that direction can be deleted since it no longer needs to be used.
+
+						The end result looks something like this:
+					</p2>
+					<a class="image"><img src="../images/GIFS/SnakeClone/SnakeWiggle.gif"/></a>
+					<p2>
+						<br/>
+						As you can tell this sort of movement algorithm that I came up with on the fly provided the perfect solution 
+						to the issue that I was having. There are lots more details that are definitely worth checking out too! All the way 
+						from how the snake grows after eating food to how the actual tile objects themselves are handled with being player owned
+						or not and each tile having its own independent direction which I actually mentioned briefly above.
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>Challenges Faced and Things Learned</h2>
+				</header>
+				<body>
+					<p2>
+						The main challenge for me in doing this self project was the time constraint coupled with the creative thinking
+						needed for snake movement problem. Thankfully, like most projects, the greatest challenge also turned into the 
+						greatest take-away. It forced me to think of some creative solutions to a farily odd problem in a timely manner
+						which is always a great skill to have practive with and get better at.
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>How to check out the project?</h2>
+				</header>
+				<body>
+					<p2>The game is up on my GitHub for you to download if you'd like to check it out!
+						<br/><br/>
+						<ul class="actions special">
+							<li><a href="https://github.com/NickBennett911/SnakeClone/tree/master" class="button">GitHub Link</a></li>
+						</ul>
+					</p2>
+				</body>
+			</article> 
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h3>Useful Socials</h3>
+				<ul class="icons alt">
+					<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>Navigate: <a href="FirstGameJam.html">Back to Top</a></li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
