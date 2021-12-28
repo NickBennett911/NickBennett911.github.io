@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<!--
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Nick Bennett Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Header -->
+		<header id="header">
+			<a class="logo">Ogre Game Engine</a>
+			<h4>March 25th, 2021</h4>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="../index.html">Hope Page</a></li>
+				<li><a href="../projectsPage.html">Projects</a></li>
+				<li><a href="../resumePage.html">Resume</a></li>
+				<li><a href="../moreAboutMe.html">More About Me</a></li>
+				<li class="active"><a href="OgreGameEngine.html">Game Engine</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands fa-linkedin"><span
+							class="label">Instagram</span></a></li>
+				<li><a href="https://github.com/NickBennett911" class="icon brands fa-github"><span
+							class="label">GitHub</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<article class="post featured">
+				<header class="major">
+					<h2>What was the goal?</h2>
+				</header>
+				<body>
+					<a class="image right"><img src="../images/GIFS/GameEngine/SpaceInvaders1.gif" /></a>
+					<p2>
+						At the beginning of class our end goal was simple, build as much of a game engine possible. We all knew
+						that this would certainly be no easy or quick task. We started by laying the ground work by integrating
+						and using Ogre 3D as our renderer. We would build off from there adding one feature at a time seeing how far 
+						each of us would make it. The process was difficult to say the least but I believe the end result is nothing 
+						too shabby. We wanted to show off some more technical c++ skills and practices by remaking space invaders as
+						best as possible in our own engine I ended up accomplishing just that.
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>My approach</h2>
+				</header>
+				<body>
+					<p2>
+					 My approach to each individual feature usually varied for each one since the implimentation was all so different. The
+					 features that are implimented in my game engine are: Singletons, OOP, Custom Python Scripting, Custom Entity Objects, 
+					 Entity Manager, Custom Physics Integration, Collision Integration, Scene Parsing, Custom Components, Component Manager
+					 Logging, Input Bindings. <br/><br/>
+					 
+					 Whenever I started at a new feature I always made sure I layed everything out befoe I actually started typing. With 
+					 a project this big its important that everything is done right or it will come back to haunt you down the road. For 
+					 example, when we first started on our entity and component system we knew we needed some kind of manager for both
+					 the entities and the components. Though since the components get attached to the entities and updated with them
+					 those can really be thought of as the component managers so we dont need anything extra. Whereas with the entities 
+					 themselves we need something that is responsible for managing all of them. For this I have a game object manager (GOM) to
+					 handle all of the game objects (aka entities) in the scene. This manager is also what we interface with when we want 
+					 to find and retrieve a game object in our scene or delete an object in the scene. Really any kind of interation with 
+					 game objects gets done through the GOM. However, one thing that may not seem obvious but also gets handled
+					 in the GOM is the loading of info from a scene file.<br/><br/>
+
+					 In my engine, scene files are .xml files that hold all of our information. Its holds all the information about all 
+					 the game objects that are in the scene as well as all the information that goes along with each game object. The scene
+					 files are parsed recursively so that it will parse no matter how big the scene is and the GOM will create the entities
+					 as it parses also setting those entities given info as it parses.<br/><br/>
+
+				   The approach taken for the custom python scripting was definitely a unique one. I had never never done anything
+					 remotely like this before so I tried to absorbe as much knowledge from my professor as possible in lectures to make sure
+					 I got this feature working. This feature, for me, is something that would really make the engine stand out since no one 
+					 wants to use an engine where they have no nice wrapper of the complicated engine code. Step one was basically making our
+					 own little .dll for our engine that wrapped up all the "middle man" functions to access our engine through so that we would 
+					 be able to import our module (called ssuge) using that dll giving us access to our engine that way. To spare super extensive
+					 detail here that was really most of the work was doing that. The process after that was really just what methods will the
+					 script user need to have the full power of the engine? And once they have that then they have the power of python and their 
+					 head to do whatever they want with the engine.<br/><br/>
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>Challenges Faced and Things Learned</h2>
+				</header>
+				<body>
+					<p2>
+						Im not going to try and pretend like this engine is anywhere even remotely close to the likes of any big dog engine
+						out there. Those engines have the benefit of way more people, money and time. But even though its primative and 
+						relatively basic this engine can be used to make a game, granted a small game most likely, but a game none the less.
+						And that was the goal really, make something that came be used to make a game and develop as many skills as possible
+						along the way, and I did just that. This projects personal benefits and so many different skills cannot be stressed more.
+						No one feature was really ever a walk in the part, since even if the implimentation looks simple chances are the 
+						information was new and so was the technique used to impliment it.<br/><br/>
+
+						Every single one of the features (beind the scenes or not) had me scratching my head at one point or another. While
+						that may seem odd to say it means that it was difficult. And because they were difficult I learned something from 
+						each and every one of them. From the simpler ones like logging to the most challenging of them including custom scripting
+						and custom physics integration with Bullet. Each one made me a better programmer and all together they made me an even
+						better programmer
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>How to check out the project?</h2>
+				</header>
+				<body>
+					<p2>The engine is up on my GitHub for you to download if you'd like to check it out! I would highly recommend checking it out
+						since the project is so large I cant really talk about each and every detail of it. Its easiest to just look at for yourself.
+						<br/><br/>
+						<ul class="actions special">
+							<li><a href="https://github.com/NickBennett911/OgreGameEngine/tree/master" class="button">Check It Out</a></li>
+						</ul>
+					</p2>
+				</body>
+			</article> 
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h3>Useful Socials</h3>
+				<ul class="icons alt">
+					<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>Navigate: <a href="FirstGameJam.html">Back to Top</a></li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
