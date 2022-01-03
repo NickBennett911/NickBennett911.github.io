@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<!--
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Nick Bennett Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Header -->
+		<header id="header">
+			<a class="logo">Stock/Crypto Trading Bot</a>
+			<h4>January 2nd, 2022</h4>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="../index.html">Hope Page</a></li>
+				<li><a href="../projectsPage.html">Projects</a></li>
+				<li><a href="../resumePage.html">Resume</a></li>
+				<li><a href="../moreAboutMe.html">More About Me</a></li>
+				<li class="active"><a href="PythonTradingBot.html">Trading Bot</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands fa-linkedin"><span
+							class="label">Instagram</span></a></li>
+				<li><a href="https://github.com/NickBennett911" class="icon brands fa-github"><span
+							class="label">GitHub</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<article class="post featured">
+				<header class="major">
+					<h2>What was the goal?</h2>
+				</header>
+				<body>
+					<p2>
+						My goal for this project was to be able to make a program that would be able to buy and sell crypto 
+						or stocks based on whether or not it thought it was a beneficial to do so. I've been into the crypto and 
+						stock market for about a year now as a very light side hobby. I thought this project would be a great
+						chance to utilize several different skills all at once and hopefully even make something that worked well in
+						the end. 
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>My approach</h2>
+				</header>
+				<body>
+					<p2>
+						Since I was starting quite literally from scratch for this project I had to think about where to actually start.
+						Before I started anything to even do with programming I wanted to have a bit more background knowledge. So I started 
+						doing some research on some different methods for determing when is a good time to buy or sell a crypto or stock. 
+						I quickly notice the term "Relative Strength Index" (RSI) popping up a lot in my research. Using a crypto or stock's
+						RSI is a very common trading strategy. RSI index, in short, is a number between 0 and 100. This number represents 
+						how "strong" the ticker at hand is; in other words if the RSI is low then it's "strong" (i.e. its a good time to 
+						buy) and if the RSI is low then its "weak" (i.e. its a good time to sell). Now how do we actually find the RSI 
+						for a given time? The formula for RSI is as follows:
+
+						<section style="text-align:left;">
+<pre><code># avg_gain - the average price gain over a period of time before present
+# avg_loss - the average price loss over a period of time before present
+RSvalue = (avg_gain / avg_loss)       # relative strength
+RSI = 100 - (100 / (1 + RSvalue))     # relative strenght index
+</code></pre>
+						</section>
+
+						</br>
+						Now that I had most of the foundational knowledge for the subject, and what I wanted to use to actually make my
+						buy/sell decisions on, I could move on. Though it didn't take long until I hit another very obvious brick wall.
+						How was I actually going to get any market information or buy and sell anything for that matter? So I took to the 
+						internet again, but this time, looking for an API that I could use (needed to be a Robinhood API since
+						that is what I was using for my trading) to bridge the gap between my bot and the actual markets. Thas how I stumbled 
+						across the API called <a href="https://robin-stocks.readthedocs.io/en/latest/index.html">Robin Stocks</a>. 
+						This API allowed me to access Robinhood, more specifically my own Robinhood account, in my code and interact 
+						with it in several different ways. This included: loging into my account, accessing historics (past information)
+						on a stock or crypto and buy/selling both stocks and cryptos. Here is a little snippit of what using Robin Stocks might
+						look like:
+						
+						<section style="text-align:left;">
+<pre><code>from robin_stocks import robinhood
+
+TICKER = "DOGE"      # the ticker that we want to get info on
+SPAN = 'month'       # how far back we are looking
+INTERVAL = 'hour'    # how often we sample past info while going back in time
+	
+# login to your own robinhood account (checkout robin stocks for details on the mfa_code)
+robinhood.authentication.login(EMAIL, PASSWORD, mfa_code=CODE)
+# historics contains 744 elements with each one being a collection of data from a specific point in time
+# the robinhood function, in this case, will get info from every hour in the past month
+Historics = robinhood.get_crypto_historicals(TICKER.upper(), interval=INTERVAL, span=SPAN)
+print(Historics[0])
+	
+# output
+# {'begins_at': '2021-12-03T02:00:00Z', 'open_price': '0.209573', 'close_price': '0.207278', 'high_price': '0.210370', 'low_price': '0.206136', 'volume': 0, 'session': 'reg', 'interpolated': False, 'symbol': 'DOGEUSD'}
+</code></pre>
+						</section>	
+
+						</br>
+						Once I got familiar with the API and the functions that I knew that I would be needing I was able to start 
+						on the actual bot part. The first thing I wanted to do was put to use the RSI research I did. Putting together a lot 
+						of different helper functions to make my own little wrapper around the API and using those to make RSI calculations in 
+						a larger scale, but still using the formula above. Once I was able to produce a RSI for every point in time in my historics
+						I was able to use the MatPlotLib library to make a line chart so the info was easier to see. Now with all the ground work 
+						layed out I needed to decide what all I wanted my bot to be able to do. The list I came up with looked something like:
+						</br>
+						1. All variables and paramaters need to be adjustable to cater to different cryptos and stocks</br>
+						2. The Bot would check to see if it wants to purchase over a certain period determined by the user</br>
+						3. The Bot would make its buy/sell decision based on the current RSI value of the ticker</br>
+						4. There needs to be some kind of info shown to the user on the fly so at a glance they could tell what's happened</br>
+						5. A summary of each program lifetime would get saved off to a file to keep a record for future look back</br>
+						6. Some kind of manual buy/sell mode in case the user wants to manual take action</br></br>
+
+						I was able to impliment everything that I had on my list for the bot. Full disclosure, however, making decisions 
+						souly based on a RSI can only be so accurate. This bot is by no means perfect and I would not recommend using it 
+						when large quantities of currency is in question. One other feature I decided to add was a way to check the accuracy
+						of the algorithms used. I check a lot of different stats that the program comes up with. One way of checking these 
+						things is by counting the number of True/False Positives/Negatives and calculating the accuracy of the predictions. 
+						Jumping over a lot of the specifics the end results come out to be very good a majority of the time and not so good 
+						some of the other times. This is because I am only taking the RSI into account, and while this can yeild some good results 
+						a good portion of the time it is not perfect. This is why I wanted all the variables and parameters to be adjustable,
+						because what might be a good span, interval and lookback period (inspect code on github for more details) for one 
+						ticker might not be good at all for another. This way with all the tools provided a user can find a set of parameters
+						that work best for the ticker they are trading.
+
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>Challenges Faced and Things Learned</h2>
+				</header>
+				<body>
+					<p2>
+					  This project presented me with many challenges. Some of those challenges include: learning a new api from scratch,
+					  teaching myself different trading strategies, coding trading strategies, calculating many different detailed statistics 
+						from raw market data, and managing all the raw market data necessary. There was no one individual that stood out as 
+						much harder than the others, because all of them were equally hard to accomplish and even harder to intertwine together.
+						They all required their own unique solution, wheather that was a programming solution or a way of thinking solution.
+						All these solutions in one way or another was outside of my comfort zone and while it was hard and sometimes stressful
+						in the moment I am all the better, more wellrounded, and skilled for it. From learning different self teaching strategies
+						that work for myself to the knowledge gained about the stock and crypto market to the programming skills atained from 
+						working outside of my comfort zone and trying new things. Everything had me learning something new and becoming all
+						the better for it. 
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>How to check out the project?</h2>
+				</header>
+				<body>
+					<p2>The bot is up on my GitHub for you to download if you'd like to check it out!
+						<br/><br/>
+						<ul class="actions special">
+							<li><a href="https://github.com/NickBennett911/PythonStockCryptoTrader" class="button">Check It Out</a></li>
+						</ul>
+					</p2>
+				</body>
+			</article> 
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h3>Useful Socials</h3>
+				<ul class="icons alt">
+					<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>Navigate: <a href="PythonTradingBot.html">Back to Top</a></li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
