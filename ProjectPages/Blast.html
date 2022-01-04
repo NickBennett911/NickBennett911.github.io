@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<!--
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Nick Bennett Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Header -->
+		<header id="header">
+			<a class="logo">B.L.A.S.T</a>
+			<h4>Current Work in Progress</h4>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="../index.html">Hope Page</a></li>
+				<li><a href="../projectsPage.html">Projects</a></li>
+				<li><a href="../resumePage.html">Resume</a></li>
+				<li><a href="../moreAboutMe.html">More About Me</a></li>
+				<li class="active"><a href="PythonTradingBot.html">B.L.A.S.T</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands fa-linkedin"><span
+							class="label">Instagram</span></a></li>
+				<li><a href="https://github.com/NickBennett911" class="icon brands fa-github"><span
+							class="label">GitHub</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<article class="post featured">
+				<header class="major">
+					<h2>What was the goal?</h2>
+				</header>
+				<body>
+					<a class="image right"><img src="../images/Blast/BlastPoster1.png" /></a>
+					<p2>
+						For this project me and my fellow seniors were tasked with completing a game within two semesters. We did have 
+						the semester before our senior year to decided on what the game would be, but only two semester to actually create
+						the game. We ened up coming up with the concept for B.L.A.S.T. The idea for the game was quite simple really, the game 
+						is essentially a combination of Doom's combat, Duke Nukem's comedy style and a movement system inspired by Titanfall. 
+						We had very limited to no technical guidance on this project once we actually got started making it. Everything was
+						decided within our team without real interfearance from anyone else. We voted on the Leads for the project and 
+						everyone got to give input on what they wanted to focus on for the game. For me, I initally ended up on the enemy 
+						ai team. And after some time I also got onto our weapons team since they were in desperate need of some fresh minds. 
+						We've been chugging along making the game ever since.</br></br>
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>What is B.L.A.S.T?</h2>
+				</header>
+				<body>
+					<p2>
+					  As I mentioned before a very easy way to think of our game is imaging a conglomeration of Doom's gameplay, Duke Nukem's
+						comedy and Titanfall's movement system (minus the wall running). We really wanted to focus on the fast pace aspect of 
+						our game. We never wanted a situation where the player was standing still. Further more we are shooting for a PvPvE, (
+						player vs player vs enemy) area style, first person shooter for a two player experience. The object being a point
+						based game, the first person to get to a certain number of points wins. To get points a player must start a 
+						generator around the map, and pick up the point that comes out of it once the timer on it finishes. All the while 
+						looking out for the enemies constantly attacking as well as the other player who might just be lurking around trying 
+						to steal your generator point once it comes out. Everything we decide on is always done by asking the question, 
+						"does this affect the players experience positively"?
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>My approach</h2>
+				</header>
+				<body>
+					<p2>
+					  Having started out only on the AI team, with just one other person, I worked a lot with Unreal's behavior tree and blackboard
+						systems. Using behavior tasks and behavior services to piece together AIs into something that functions as inteded. 
+						The first short bit of work was just familiarizing myself with these systems so that I knew what I was doing when 
+						we dove into making the AI for B.L.A.S.T. The decision was made early on that we would be using Unreal's C++ style 
+						of development since blueprints only is not something we though would be as beneficial. If you're not familiar with 
+						the problem that arises with Unreal's C++ then I should tell you there is very minimal documentation with this method.
+						So learning the in's and out's of Unreals behavior trees was not something that was as easy as googling something when 
+						we hit a road block. We had to go through a lot of trial and error until we slowely pieced together how everything worked
+						with the help of some decent YouTube tutorials that we found along the way.</br></br>
+
+						When my partner and I started work on the game's AI we thought it best to take a divid and conquer
+						approach to our work. We knew we had four enemies that were planned out for B.L.A.S.T and we decided that we would each
+						take two of them under our wing. The four for the game included the: Grunt, Flyer, Engineer and Suicider. The two 
+						that I took under my wing along the way were the Grunt and the Flyer with the Flyer being the first of the two I 
+						created.</br></br>
+
+						When I started on the flyer I knew that there were some things that were already decided on for how the team wanted 
+						it to behave. We wanted to flyer to have a very "jelly fish" like movement (meaning a kind of periodic force application 
+						while it moves along it's path) that is hard to hit and have long range charge attacks. This results in it being
+						hard to hit while it moves, but also allowing a window of opportunity to shoot it while it's stopped for attacking.
+					  </br></br>
+						I wanted to keep the behavior tree for the flyer as minimal as possible so that it was easier to read. For the 
+						behavior tree I knew that I would need two main sides; one side for patroling and the other for attacking. This 
+						is a very similar idea I applied to the behavior tree for the grunt AI as well. They both needed the same general 
+						behaviors in terms of attacking and patrolling, however the tasks that each tree uses are entirely different in 
+						how they work. And this different in the task is what makes each AI unique in how they behave. 
+						<div class="row">
+							<div class="column">
+								<img src="../images/Blast/FlyerBehaviorTree.PNG" alt="valid" style="width:105%">
+							</div>
+							<div class="column">
+								<img src="../images/Blast/GruntBehaviorTree.PNG" alt="solve" style="width:105%">
+							</div>
+						</div> 
+						(The image on the left is the Flyer's behavior tree and the one on the right is the Grunt's. Note: For the flyer,
+						I did adapt my own 3D volume made of grid cells that the is used for all of it's pathfinding)
+					  </br></br>
+					  To be able to see just how different each AI is, here are a couple short clips on both of them in actions:
+						<div class="row">
+							<div class="column">
+								<img src="../images/GIFS/Blast/FlyerDemo1.gif" alt="valid" style="width:105%">
+							</div>
+							<div class="column">
+								<img src="../images/GIFS/Blast/GruntDemo1.gif" alt="solve" style="width:105%">
+							</div>
+						</div> 
+						<div class="row">
+							<div class="column">
+								<img src="../images/GIFS/Blast/FlyerDemo2.gif" alt="valid" style="width:105%">
+							</div>
+							<div class="column">
+								<img src="../images/GIFS/Blast/GruntDemo2.gif" alt="solve" style="width:105%">
+							</div>
+						</div> 
+						(The left column depicts the flying AI and the right column depicts the grunt AI. Note: In all the clips 
+						of the enemies, each of them have their "debug mode" turned on to make it easier to see just how their behaving.)
+					  </br></br>
+						
+						Along with the AI for B.L.A.S.T the other main area I've had a significant influence on is our weapons system.
+						I came onto the weapons team part way into the semester since our current weapons was in dire need of a 
+						complete overhaul. My partner and I both completely redesigned our weapons system and in the process made it 
+						into more of an inventory system that encapsulated our weapon system. The entire goal of our redesign was to be 
+						as user friendly as possible. We wanted everything to be as easily adjustable as possible. We wanted to have an 
+						inventory that can pickup anything that inherits from our custom Item type and decided what to do with it (this is 
+						what I was responsible for writing, the Inventory system, however the entire system I helped re-write). That way 
+						we could make all of our weapons derive from Item but it also leaves room to make other items down the line. We 
+						wanted a work flow that was very short and simple for anyone on the team to use. We just wanted to put on the 
+						custom Inventory Component and set one or two variables inside the component and it works perfect.</br></br>
+
+						For the internal weapon system in the inventory, there had to be certain functionalities. These included:</br>
+						1. Three weapon slots, one of which is dedicated to a default weapon that never runs out of ammo.</br>
+						2. An enum class for each weapon slot so that we had a way to keep track of the active mod.</br>
+						3. If an Item is picked up and is found to be a weapon it gets put into the first empty weapon slot (if there 
+						   is no empty weapon slot the weapon is just destroyed).</br>
+						4. As the player shoots their weapon keep track of ammo and if the player runs out the weapon is removed.</br>
+						5. After active weapon is deleted update active weapon to either slot 1 or 2 if either contains a weapon, 
+						   switch to default if not.</br>
+						6. Fire, Release and Update methods that all call the active mod's version of those same methods.</br></br>
+
+						To show off all of these different systems and functions at work, below is a short demo of all the above 
+						functinoalities at work:</br>
+						<a class="image"><img src="../images/GIFS/Blast/WeaponDemo1.gif" style="width:100%"/></a></br>
+						You can see how the inventory switches between weapons as they are picked up and as they run out of ammo.
+						The UI shows what the active mod is and how it changes on the fly based on what the inventory says.
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>Challenges Faced and Things Learned</h2>
+				</header>
+				<body>
+					<p2>
+					  Even though the project isn't completed yet there have still been a lot of challenges and things that I've learned.
+						The largest challenge overall so far has been the lack of documentation on things that I've tried to do. It makes 
+						things much harder when you have nothing to reference or arent sure how to get to a certain function you know 
+						exists somewhere within Unreal. I've basically self taught myself everything in this project so far. All the 
+						Unreal C++ has been completely self taught and as well as all the built in AI tools I've used for the game.
+						However, as everyone knows pushing through something that is difficult in the moment always makes you better at 
+						that thing after the fact. Because I had to dig so hard on the things I had to teach myself that makes me all the
+						more knowledgable about those topics. Some of the things I've learned from this project so far include:</br>
+						1. How to succeed within a large group environment.</br>
+						2. A much better working understanding of version control, specifically Perforce.</br>
+						3. Unreal's built in AI tools: behavior tree's, tasks and services, making a task repeat until it acheives a certain
+						   goal etc.</br>
+						4. How to debug Unreal C++ code using breakpoints within Rider and Visual Studio.</br>
+						5. Functional understanding of Unreal C++ and several different Unreal specific tasks within it's code.</br>
+						6. Larger understanding of regular C++ how detailed things with it (includes playing a large role in designing
+						   the whole inventory, weapon and pickup system for B.L.A.S.T).
+
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>How to check out the project?</h2>
+				</header>
+				<body>
+					<p2>Keep updated here and when we have a build of the game ready to show off I'll be sure to post that here 
+						for you to play!
+						<br/><br/>
+						<ul class="actions special">
+							<li><a href="" class="button">Coming Soon</a></li>
+						</ul>
+						<br/><br/>
+						In the mean time, I'll trying to post consistent dev logs for when there is something significant to show off.
+						You can try and check out those here:
+						<br/><br/>
+						<ul class="actions special">
+							<li><a href="" class="button">Dev Logs Coming Soon</a></li>
+						</ul>
+					</p2>
+				</body>
+			</article> 
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h3>Useful Socials</h3>
+				<ul class="icons alt">
+					<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>Navigate: <a href="PythonTradingBot.html">Back to Top</a></li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.scrollex.min.js"></script>
+	<script src="../assets/js/jquery.scrolly.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
