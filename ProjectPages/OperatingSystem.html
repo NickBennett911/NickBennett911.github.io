@@ -32,7 +32,7 @@
 				<li><a href="../projectsPage.html">Projects</a></li>
 				<li><a href="../resumePage.html">Resume</a></li>
 				<li><a href="../moreAboutMe.html">More About Me</a></li>
-				<li class="active"><a href="TheCavern.html">The Cavern</a></li>
+				<li class="active"><a href="OperatingSystem.html">Operating System</a></li>
 			</ul>
 			<ul class="icons">
 				<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands fa-linkedin"><span
@@ -50,15 +50,8 @@
 					<h2>What was the goal?</h2>
 				</header>
 				<body>
-					<a class="image right"><img src="../images/GIFS/TheCavern/StartOfGame.gif" /></a>
 					<p2>
-						The original goal of this project was quite simple, make a game for a school project to learn the basic in's and 
-						out's of Unreal engine. But with continuted hard work and time being poured into the project by my partner and 
-						I we decided we wanted to try and take it and work on it past the end of the semester. We wanted to try and 
-						finish the game and get it put onto Steam since that seemed like a huge achievement to the both of us. We started 
-						off with laying out what we wanted to make. We both talked about how interesting a challenge making a horror game 
-						might be. We layed out a brief outline of how we wanted to game to play and some ideas for mechanics. With some 
-						light groundwork down we hit the ground running.
+						
 					</p2>
 				</body>
 			</article> 
@@ -69,56 +62,7 @@
 				</header>
 				<body>
 					<p2>
-					 With the outline layed out we knew that we also needed to come up with roles for ourselves so that we didnt end up
-					 stepping on each others toes. It worked out quite nice actually, my partner knew that he really liked lighting and
-					 map design and the some of technical art aspects that go along with those. As for me I knew that I was very passionate
-					 about the systems and mechanics programming and so I undertook all the programming for the game (including: 
-					 all the ghost logic, the main driving progressions systems, movement, menu systems, main menu, sounds, win and lose
-					 conditions, etc). It seemed a bit daunting having all the programming on my shoulders, but I was very excited about 
-					 the challenge. It is also worth noting that one requirment for this project was using Unreal's blueprint system.
-					 <br/><br/>
-
-					 While my partner worked on the map layout in our main level using some nice assets we found on the Unreal market
-					 I decided to start prototyping in my own size level. I knew that the ghost for the game would be the main centerpiece
-					 so I started on that first. I started by thinking about other horror games and what makes them scary. Aside from 
-					 sounds which is always important they all also seemed to utilize jump scares and some kind of chase mechanic. The jump
-					 scare doing well immediate scares and the chasing doing the "edge of the seat kinda suspense" as the player tries to
-					 run away. So I went about implimenting these behaviours for our ghost. He sometimes spawns in front of player and 
-					 chases them and can also spawn behind the player to do the same thing. With just these two mechancis we realized quickly
-					 that it wasnt enough at all, they worked but they got too repetative.<br/><br/>
-
-					 So I did some more research (aka played some horror games) and also found that in some games every scary moment that 
-					 happens doesnt involve the player getting directly attacked. A lot of the time the main enemy will just walk past a hallway
-					 ahead of them or some kind of object will do the scaring. So I also decided to try and adopt these two mechanics. I started
-					 with the "ghost objects" which were pretty simple. I made a basic blueprint that could be given any mesh and when the player
-					 gets within an adjustable range the object would get thrown at somewhat towards the player.<br/><br/>
-
-					 I decided to tackle the "ghost wondering" next. This was a little more challenging because I realized you couldnt just
-					 spawn the ghost in randomly and give him a random direction to move since he might just spawn and walk right into a wall
-					 never getting seen by the player. So I made a little algorithm that runs everytime the ghost goes to spawn in. Once the
-					 location within the map gets selected a ray is shot downwards until it hits the floor so we can spawn the ghost there and 
-					 he isnt too high or too low into the ground. Once we have that a number or rays get shot out in a circle around that point.
-					 The reason for this is that we can keep track of how far each of those rays travel before hitting a wall. With this we
-					 are able to tell which direction has the most space for the ghost to travel. In other words the ray with the farthest 
-					 distance to its hit is the direction that the ghost travels in. This increases the odds of the ghost getting seen by
-					 the player much much higher.
-					 <div class="row">
-						<div class="column">
-							<img src="../images/GIFS/TheCavern/FinalClue.gif" alt="valid" style="width:105%">
-						</div>
-						<div class="column">
-							<img src="../images/GIFS/TheCavern/FearGoingAway.gif" alt="solve" style="width:105%">
-						</div>
-					</div> 
-					<br/>
-					The clip on the left demonstrates out object based gameplay. The paper by the fire gives the player three objectives
-					in the cave to locate and as the player does that they get scratched off the paper. As this happens the ghost also 
-					gets more aggresive, the more objectives the more aggresive.<br/><br/>
-
-					The clip on the right deomstrates our "fear" mechanic. As the player looks at the ghost they build up fear which shows 
-					itself as the player lossing their vision (this is also the death condition, if the player losses their sight all the 
-					way they die as a result). The clip also shows how the fire is like the players safe zone because it
-					strips away the fear much much faster than it goes away natrually.
+					 
 					</p2>
 				</body>
 			</article> 
@@ -129,17 +73,7 @@
 				</header>
 				<body>
 					<p2>
-					  The greatest challenge that I personally faced was the fact that I was the only programmer. Having the weight of 
-						all the programming for the game on my shoulders got a bit heavy every now and then. It really made me push myself 
-						in my time management abilities and just programming skills in general. I had to be more efficient with the code I wrote, 
-						making sure that a system or chunk of code didnt end up taking too many recourses for a frame.<br/><br/>
-						
-						Another main challenge both my partner and I had to deal with is how this game was pretty much our first experience
-						in doing something semi large scale in Unreal engine. We had limited experience with using it prior, but we had 
-						done nothing like this before. So naturally there were hurdles that needed to be jumped over and things we had to learn
-						as we went along. But because we did our own research on the topics we did not know, I became that much stronger 
-						on that particular topic. It could become grueling at the time, but looking back, it has made me all that much better
-						at using Unreal 
+					  
 					</p2>
 				</body>
 			</article> 
@@ -175,7 +109,7 @@
 		<!-- Copyright -->
 		<div id="copyright">
 			<ul>
-				<li>Navigate: <a href="FirstGameJam.html">Back to Top</a></li>
+				<li>Navigate: <a href="OperatingSystem.html">Back to Top</a></li>
 				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
 			</ul>
 		</div>
