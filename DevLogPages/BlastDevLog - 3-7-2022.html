@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<!--
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Nick Bennett Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Header -->
+		<header id="header">
+			<a class="logo">Blast</a>
+			<h4>Dev Log 2 </br>
+					3/7/22 - 3/13/22</h4>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="../index.html">Home Page</a></li>
+				<li><a href="../projectsPage.html">Projects</a></li>
+				<li><a href="../resumePage.html">Resume</a></li>
+				<li><a href="../moreAboutMe.html">More About Me</a></li>
+				<li><a href="../ProjectPages/Blast.html">Blast</a></li>
+				<li class="active"><a href="BlastDevLog - 3-7-2022.html">Dev Log 2</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands fa-linkedin"><span
+							class="label">Instagram</span></a></li>
+				<li><a href="https://github.com/NickBennett911" class="icon brands fa-github"><span
+							class="label">GitHub</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<article class="post featured">
+				<header class="major">
+					<h2>Overview</h2>
+				</header>
+				<body>
+					<p2>
+						<h4>What was the goal during this Dev Log?</h4>
+						The goal for this dev log was to continue re-implementing the remaining weapons using the helper functions that got created last week.
+						This included the rocket, flamethrower, laser, shotgun, and railgun. All of which needed back into the game.
+					</p2>
+				</body>
+				<body>
+					<p2>
+						<h4></br>What actually got achieved</h4>
+						As far as this weeks was concerned I was able to get everything back into the game with the minor exception of the laser which was found to 
+						have a bug in the vfx as well as still needed testing for its functionality as over the weekend another bug in our player prevented me from testing 
+						and haulted progress for the remainder of the dev log. Besides the hickup with the laser I was able to use all the created helper functions from last dev 
+						log to add the rocket, shotgun, and half the railgun back into the game releatively painlessly. The flamethrower vfx, laser vfx and the railgun charge vfx 
+						all required custom code and extra custom networking helper functions. This was because of their unique differencs being all vfx that are reliant on 
+						a button being held down so the vfx had to be kept track of vs the other weapons where we can just put the vfx in the world and not have to worry about it
+						after that. Some of those custom functions and code can be seen below during the individual notes for the days. Along with these major changes,
+						it's important to note that many small bugs got fixed all throughout the week that maybe werent quite as import so I didnt directly include them in the dev log.
+					</p2>
+				</body>
+				<body>
+					<p2>
+						<h4></br>Challenges Faced</h4>
+					  The largest challenges over this dev log were definitly the custom logic needed for tackling the different vfx logic needed and the networking code 
+						that was needed to handle that custom logic as well as the set back over the weekend. This required me to put to use the knowledge and skills I learned
+						over the course of the previous dev log (along with a little help from Unreal Slackers) to create the functions and logic needed to get them to function 
+						properly. Being able to do this mostly on my own with little help was definitely a confidence boost for myself when it comes to my ability to do network code 
+						in Unreal. Aside from that the setback was definitly a hinderince as it prevented me entirly from being able to work on anything and test it since 
+						code for our player was bugged and didnt get fixed by others until after the weekend.
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>Specifics</h2>
+				</header>
+				<header class="">
+					<h4>3/7/2022</h4>
+				</header>
+				<body>
+					<p2>
+						The goal for today was to re-integrate the shotgun mod back into the game using the helper functions I made during the previous dev log.
+						For the shot gun this was fairly strait forward as it was similar to the railgun and default mod which were already finished last dev log.
+						Thankfully since as much code as possible was encapsulated within the those functions it was pretty much just a matter of calling the correct functions 
+						in the correct spot within the mod. After that there was extensive testing to make sure no bugs were sneaking through from a functionality standpoint.
+					</br>
+						Other than that re-integration I delegated tasks out to my fellow weapons team members so that they had something to work on as well as review code 
+						that was submitted by a fellow weapons team member. This code was for the re-integration for the rocket launcher back into the game with proper networking being
+						used. After finding and fixing a couple bugs within that code review it was pretty much just testing things in the game as a whole and finding any bugs I could
+						with the time I had left in the day.
+						<div class="row">
+							<div class="column">
+								<img src="../images/GIFS/Blast/DevLog2/RocketDemo.gif" alt="valid" style="width:105%">
+							</div>
+							<div class="column">
+								<img src="../images/GIFS/Blast/DevLog2/ShotgunDemo.gif" alt="solve" style="width:105%">
+							</div>
+						</div> 
+					</p2>
+				</body>
+				<header class="">
+					<h4></br>3/8/2022</h4>
+				</header>
+				<body>
+					<p2>
+						Today revolved around bug finding and fixes for the three mods that have been updated; the default, rocket, and shotgun. The reason for the bug finding 
+						now as apposed to when the mods have all been updated is pretty simple. To make sure we have the system down and we dont end up duplicating the same bug 
+						across multiple mod re-implementations. If we update a mod now and put the extra bit of time in after to find any bugs then that saves us from making that 
+						same error when doing the other mods. That way I invest a small amout of time fixing a bug for one or two mods vs having to fix the same bug within all 6 mods.
+						The bugs I found were the forgotten re-implementation of our fire rates when the mods were updated as well as an ammo bug in the rocket launcher that needed 
+						tending to. This bug did not allow the rocket explosion to damage anything in its AOE. Thankfully these bugs were spotten now and easily fixed with a small time 
+						commitment. Here are a couple demos of those bug fixes in action. 
+						<div class="row">
+							<div class="column">
+								<img src="../images/GIFS/Blast/DevLog2/AmmoDepleateSwitch.gif" alt="valid" style="width:105%">
+							</div>
+							<div class="column">
+								<img src="../images/GIFS/Blast/DevLog2/RocketAmmo.gif" alt="solve" style="width:105%">
+							</div>
+						</div> 
+						The video on the left shows the retained functionality of the inventory holding two mods and switching to the other held mod when the current held mod runs 
+						out of ammo. The video on the right shows the functional rocket after its bug fix with its ammo as well as the correct rate of fire.
+					</p2>
+				</body>
+				<header class="">
+					<h4></br>3/10/2022 & 3/11/2022</h4>
+				</header>
+				<body>
+					<p2>
+					  The past two days revolved around updated the remaining weapons as well as integrating all the new weapon vfx's for all the weapons. To start off I'll 
+						talk about the remaining weapons and their updated versions as they are a bit interesting. The last two (actually three) weapons that needed their vfx to 
+						be updated were the laser, railgun, and flamethrower. What makes these mods different is that we cant just spawn in a vfx system and leave it at that, 
+						we have to hold some kind of reference to the system. To accomplish this the follow bits of code were added:
+
+						<section style="text-align:left;">
+<pre><code>	//flamethrower .h file
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	UNiagaraComponent* FlameThrowerEffect = nullptr;
+
+	/** This variable is used to determine if a mod that gets held down needs its vfx on or off */
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_FireState)
+
+	/** Function called after Fire State gets replicated, simply calls the UpdateFireState() */
+	UFUNCTION()
+	virtual void OnRep_FireState();
+
+	/** Responsible for handling the logic for after the fire state is updated, mainly turning vfx on and off */
+	virtual void UpdateFiringState();
+
+	// if true then vfx is firing, else vfx is not firing
+	bool bFireState = true;
+
+	//flamethrower .cpp file
+	void AFlameThrowerMod::UpdateFiringState()
+	{
+		if (bFireState)
+		{
+			FlameThrowerEffect->Activate();
+		}
+		else
+		{
+			FlameThrowerEffect->Deactivate();
+		}
+	}
+	void AFlameThrowerMod::FireActiveMod(UCameraComponent* CameraComponent, UStaticMeshComponent* MuzzleLocation)
+	{	
+		// this chunk of code is responsible for turning the vfx on and off on the client
+		OwningPlayer->UpdateFireState(this, true);	// this function sets FireState to true on the server
+		FireState = true;
+		UpdateFiringState();
+	}
+</code></pre>
+						</section>
+						This logic once applied was easy to adapt where needed and apply the the logic of the laser as well as the railguns charge vfx. All while 
+						maining the networked logic so that both client and server can see all the vfx we want them to. By that I mean some vfx we may 
+						not want to bother with sending over the server and just do it locally. For example, most of the new vfx given to me by our vfx 
+						artist have seperate muzzle vfx and projectile vfx. In most cases, except for the railgun, the muzzle vfx is not replicated 
+						across to the other player since its not really something thats critical by any means and only adds to the visuals for the 
+						player firing the weapon. 
+						<div class="row">
+							<div class="column">
+								<img src="../images/GIFS/Blast/DevLog2/Laser Demo.gif" alt="valid" style="width:105%">
+							</div>
+							<div class="column">
+								<img src="../images/GIFS/Blast/DevLog2/FlameThrower Demo.gif" alt="solve" style="width:105%">
+							</div>
+							<div class="column">
+								<img src="../images/GIFS/Blast/DevLog2/RailGun Demo.gif" alt="solve" style="width:105%">
+							</div>
+						</div> 
+						Above are some examples of where things are at by the end of these two days. These new weapons and their custom vfx
+						logic are all up and running now and fully functional as complete weapons.
+					</p2>
+				</body>
+			</article> 
+
+
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h3>Useful Socials</h3>
+				<ul class="icons alt">
+					<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+					<li><a href="https://github.com/NickBennett911" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>Navigate: <a href="BlastDevLog - 3-7-2022.html">Back to Top</a></li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.scrollex.min.js"></script>
+	<script src="../assets/js/jquery.scrolly.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
