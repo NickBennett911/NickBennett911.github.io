@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<!--
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Nick Bennett Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Header -->
+		<header id="header">
+			<a class="logo">Cryptarithm Solver</a>
+			<h4>April 5th, 2022</h4>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="../index.html">Home Page</a></li>
+				<li><a href="../projectsPage.html">Projects</a></li>
+				<li><a href="../resumePage.html">Resume</a></li>
+				<li><a href="../moreAboutMe.html">More About Me</a></li>
+				<li class="active"><a href="CryptarithmSolver.html">Trading Bot</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands fa-linkedin"><span
+							class="label">Instagram</span></a></li>
+				<li><a href="https://github.com/NickBennett911" class="icon brands fa-github"><span
+							class="label">GitHub</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<article class="post featured">
+				<header class="major">
+					<h2>What was the goal?</h2>
+				</header>
+				<body>
+					<p2>
+						The goal for this little project was to make a solver that I could give a Cryptarithm and it would solve it,
+						giving me all the possible solutions for the input. Since not every Cryptarithm has just one solution. I also 
+						wanted to take into account the potential for leading zeros in numbers and if they are allowed or not since 
+						that will also greatly change the number of solutions. 
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>My approach</h2>
+				</header>
+				<body>
+					<p2>
+						For this apprach I went ahead and took a brute force approach. Firstly I went ahead an took the input 
+						and extracted all the unique letters from it. Once that information is attained I need to get all possible
+						permutations of the 0-9 number combinations. This way we can check the permutations to find which of them fit 
+						for the input given. This is done like so: 
+						<section style="text-align:left;">
+<pre><code>from itertools import permutations
+
+inp = input("Input at least 3 words all separated by once space: ")
+inp = inp.split(" ")
+
+letters = CreateUniqueLettersList(inp)  # create the unique letters from the input given
+
+# create all possible permutations from the unique letters
+possible = list(permutations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], len(letters)))
+</code></pre>
+						</section>
+
+						The acutal permutations come in to play with the itertools function "permutation()". This function allows us 
+						to give it a list of options, in this case our possible 0-9 digits, and then a number n. What this does is give us
+						all the possible ways we can have a combination of length n of the list given. A smaller example of this might look
+						like this:
+						<section style="text-align:left;">
+<pre><code>from itertools import permutations
+
+# create all possible permutations
+possible = list(permutations([0, 1, 2], 2))
+
+# possible = [[0, 1], [1, 2], [0, 2]]
+</code></pre>
+						</section>
+
+						Once we have all the possible permutations for the numbers the rest is pretty strait forward. We check each and
+						every one to see if that permutation is a valid option for the Cryptarithm given. This is done using the function
+						described 
+
+						<section style="text-align:left;">
+<pre><code>def IsValuePermutation(perm_nums, words, letters, LeadingZeros):
+	'''
+	Check to see if permutation is a valid one given the words and unique letters
+	:param perm_nums: permutation being checked i.e. a list of numbers
+	:param words: a list of our words that was given to us
+	:param letters: the unique letters for the given words
+	:param LeadingZeros: tells us if we are allowing leading zeros or not
+	:return: True if possible, False otherwise
+	'''
+	lookup = CreateLookUp(letters, perm_nums)   # create our lookup table to be passed
+	WordsAsNums = []
+	for word in words:
+			num = WordToNum(word, lookup)
+			if LeadingZeros != "Yes":
+					if len(str(num)) < len(word):   # this means we had a leading zero so we return false
+							return (False, [])
+			WordsAsNums.append(num)
+
+	result = 0
+	for i in range(len(WordsAsNums)-1): # add up our results except for the last
+			result += WordsAsNums[i]
+
+	if result == WordsAsNums[-1]:   # if our addition matches then return true
+			return (True, WordsAsNums)
+	return (False, [])
+</code></pre>
+						</section>
+
+						To break this down a bit I will describe it chunk by chunk. Firstly what we will do is create our own 
+						little look up table to make things easier. What this does is create a dictionary from our unique letters and 
+						the current permutation of numbers being checked so that we may easily look up a number associated with a letter.
+						After this what we want to do is convert all the words from the input into numbers using that lookup table. This 
+						can be done very easiy using some fancy python syntax like so:
+
+						<section style="text-align:left;">
+<pre><code>def WordToNum(word, lookup):
+	return int("".join(str(lookup[letter]) for letter in word))
+</code></pre>
+						</section>
+
+						Then once we have all the words into their numbers for the permutation we simply check to additions of the 
+						numbers to see if they match and if so then we can say for certain that the permutation is one that words.
+
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>Challenges Faced and Things Learned</h2>
+				</header>
+				<body>
+					<p2>
+					  The largets challenge for this was not neccessarily the algorithm in particular but how to do it quickly and 
+						in a consise way. Along with this came the challenge of understanding itertools' permutation() function 
+						and how to use that and apply it to this situation correctly. But for me what I was really trying to do with this 
+						was see how cleverly I could solve the problem as well as how concisely and neatly I could write the code to do it.
+					</p2>
+				</body>
+			</article> 
+
+			<article class="post featured">
+				<header class="major">
+					<h2>How to check out the project?</h2>
+				</header>
+				<body>
+					<p2>The source code is up on my GitHub for you to download if you'd like to check it out! Along with this the project
+						is also on replit.com so that you can run it that way as well! (NOTE: Due to how the replit website works,
+						running the code there will increase runtime)
+						<br/><br/>
+						<ul class="actions special">
+							<li><a href="https://github.com/NickBennett911/CryptarithmSolver" class="button">GitHub Link</a></li>
+						</ul>
+						<ul class="actions special">
+							<li><a href="https://replit.com/@NickBennett4/Cryptarithm-Solver#main.py" class="button">Replit Link</a></li>
+						</ul>
+						
+					</p2>
+				</body>
+			</article> 
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h3>Useful Socials</h3>
+				<ul class="icons alt">
+					<li><a href="https://www.linkedin.com/in/nick-bennett-712492172/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+					<li><a href="https://github.com/NickBennett911" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>Navigate: <a href="CryptarithmSolver.html">Back to Top</a></li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.scrollex.min.js"></script>
+	<script src="../assets/js/jquery.scrolly.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
